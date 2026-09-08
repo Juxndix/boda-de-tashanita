@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tashana &amp; Chanchito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #0b0f1a;
+    --ink-2: #101728;
+    --ink-3: #161f36;
+    --parchment: #efe4ce;
+    --parchment-dim: #cabb9a;
+    --gold: #c9a667;
+    --gold-soft: rgba(201,166,103,0.35);
+    --rose: #c2919a;
+    --adriatic: #6c9a9d;
+    --muted: #7c869e;
+    --serif-display: 'Fraunces', serif;
+    --serif-body: 'Newsreader', serif;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--ink);
+    color: var(--parchment);
+    font-family: var(--serif-body);
+    font-size: 19px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  ::selection{ background: var(--gold-soft); color: var(--parchment); }
+
+  #sky{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% -10%, #1a2440 0%, transparent 55%),
+      linear-gradient(180deg, #0b0f1a 0%, #0a0d16 55%, #08090f 100%);
+  }
+
+  main{
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- thread (hilo dorado que recorre la pagina) ---------- */
+  .thread-wrap{
+    position: fixed;
+    top: 0;
+    left: 28px;
+    height: 100vh;
+    width: 2px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .thread-track{
+    position: absolute;
+    inset: 0;
+    width: 1px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, rgba(201,166,103,0.05), rgba(201,166,103,0.14) 10%, rgba(201,166,103,0.14) 90%, rgba(201,166,103,0.05));
+  }
+  .thread-fill{
+    position: absolute;
+    top: 0; left: 0;
+    width: 1px;
+    height: 0%;
+    background: linear-gradient(180deg, var(--gold), var(--rose) 60%, var(--adriatic));
+    box-shadow: 0 0 8px 1px var(--gold-soft);
+    transition: height 0.08s linear;
+  }
+  .thread-spark{
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    width: 7px; height: 7px;
+    margin-left: -3.5px;
+    margin-top: -3.5px;
+    border-radius: 50%;
+    background: var(--parchment);
+    box-shadow: 0 0 10px 3px var(--gold), 0 0 20px 6px rgba(201,166,103,0.4);
+  }
+
+  @media (max-width: 780px){
+    .thread-wrap{ left: 14px; }
+  }
+
+  /* ---------- layout ---------- */
+  .col{
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 0 32px 0 68px;
+  }
+  @media (max-width: 780px){
+    .col{ padding: 0 20px 0 44px; }
+  }
+
+  section{
+    padding: 108px 0;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+  }
+
+  .seal{
+    width: 92px;
+    height: 92px;
+    margin-bottom: 38px;
+    position: relative;
+  }
+  .seal svg{ width: 100%; height: 100%; overflow: visible; }
+  .seal-base{
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.1;
+    opacity: 0.85;
+  }
+  .seal-crack{
+    fill: none;
+    stroke: var(--parchment);
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    opacity: 0;
+    transition: stroke-dashoffset 1.1s ease, opacity 0.4s ease;
+  }
+  .seal.opened .seal-crack{
+    stroke-dashoffset: 0;
+    opacity: 0.9;
+  }
+  .seal.opened .seal-base{
+    animation: sealPulse 1.6s ease-out;
+  }
+  @keyframes sealPulse{
+    0%{ opacity: 0.85; }
+    35%{ opacity: 1; filter: drop-shadow(0 0 6px var(--gold)); }
+    100%{ opacity: 0.85; filter: none; }
+  }
+
+  .eyebrow{
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--parchment-dim);
+    letter-spacing: 0.02em;
+    margin-bottom: 18px;
+    opacity: 0.85;
+  }
+
+  h1.title{
+    font-family: var(--serif-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(44px, 9vw, 84px);
+    line-height: 1.05;
+    margin: 0 0 26px 0;
+    color: var(--parchment);
+    letter-spacing: -0.01em;
+  }
+
+  .hero-sub{
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--parchment-dim);
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .scroll-cue{
+    position: absolute;
+    bottom: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: hint 2.6s ease-in-out infinite;
+  }
+  .scroll-cue span.line{
+    width: 1px;
+    height: 34px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+  @keyframes hint{
+    0%,100%{ transform: translate(-50%, 0); opacity: 0.6; }
+    50%{ transform: translate(-50%, 6px); opacity: 1; }
+  }
+
+  /* ---------- chapters ---------- */
+  .chapter-mark{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 34px;
+  }
+  .chapter-num{
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--gold);
+    min-width: 34px;
+  }
+  .chapter-rule{
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold-soft), transparent);
+  }
+  h2.chapter-title{
+    font-family: var(--serif-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(28px, 4.2vw, 38px);
+    margin: 0 0 40px 0;
+    color: var(--parchment);
+    line-height: 1.2;
+  }
+
+  p{
+    margin: 0 0 26px 0;
+    color: var(--parchment-dim);
+    font-size: 19px;
+  }
+  p:last-child{ margin-bottom: 0; }
+
+  .reveal{
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(6px);
+    transition: opacity 1s cubic-bezier(.22,.61,.36,1), filter 1s cubic-bezier(.22,.61,.36,1), transform 1s cubic-bezier(.22,.61,.36,1);
+  }
+  .reveal.in{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  .reveal.d1{ transition-delay: 0.05s; }
+  .reveal.d2{ transition-delay: 0.22s; }
+  .reveal.d3{ transition-delay: 0.4s; }
+
+  /* ---------- italy motif ---------- */
+  .motif{
+    margin: 6px 0 44px 0;
+    opacity: 0.9;
+  }
+  .motif svg{ width: 84px; height: auto; overflow: visible; }
+  .motif path, .motif circle{
+    fill: none;
+    stroke: var(--adriatic);
+    stroke-width: 1.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    transition: stroke-dashoffset 1.8s ease;
+  }
+  .motif.in path, .motif.in circle{ stroke-dashoffset: 0; }
+
+  em{
+    font-style: italic;
+    color: var(--parchment);
+  }
+
+  .pull{
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(22px, 3.2vw, 28px);
+    line-height: 1.4;
+    color: var(--parchment);
+    margin: 8px 0 40px 0;
+    border-left: 1px solid var(--gold-soft);
+    padding-left: 24px;
+  }
+
+  /* ---------- closing ---------- */
+  .closing{
+    text-align: left;
+    padding-top: 60px;
+    padding-bottom: 170px;
+  }
+  .signature-wrap{
+    margin-top: 56px;
+  }
+  .signature-wrap svg{
+    width: 260px;
+    max-width: 70vw;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+  .sig-path{
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 900;
+    stroke-dashoffset: 900;
+    transition: stroke-dashoffset 2.4s cubic-bezier(.22,.61,.36,1);
+  }
+  .signature-wrap.in .sig-path{ stroke-dashoffset: 0; }
+
+  .final-line{
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--parchment-dim);
+    margin-top: 36px;
+  }
+  .heart{
+    display: inline-block;
+    animation: beat 2.4s ease-in-out infinite;
+  }
+  @keyframes beat{
+    0%,100%{ transform: scale(1); }
+    50%{ transform: scale(1.18); }
+  }
+
+  footer{
+    padding: 40px 0 60px 0;
+    text-align: left;
+  }
+  .footer-note{
+    font-size: 13px;
+    color: var(--muted);
+    font-family: var(--serif-body);
+    font-style: italic;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal{ opacity: 1; filter: none; transform: none; }
+  }  /* ---------- RSVP form ---------- */
+  .rsvp-form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+    max-width: 380px;
+  }
+  .rsvp-label{
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+  .rsvp-input{
+    font-family: var(--serif-body);
+    font-size: 17px;
+    color: var(--parchment);
+    background: rgba(239,228,206,0.05);
+    border: none;
+    border-bottom: 1px solid var(--gold-soft);
+    padding: 8px 4px;
+    outline: none;
+  }
+  .rsvp-input:focus{
+    border-bottom-color: var(--gold);
+  }
+  select.rsvp-input{
+    -webkit-appearance: none;
+    appearance: none;
+    color-scheme: dark;
+  }
+  .rsvp-submit{
+    margin-top: 26px;
+    align-self: flex-start;
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+    background: var(--gold);
+    border: none;
+    border-radius: 3px;
+    padding: 12px 26px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+  }
+  .rsvp-submit:hover{ opacity: 0.88; transform: translateY(-1px); }
+  .rsvp-submit:disabled{ opacity: 0.5; cursor: default; }
+  .rsvp-status{
+    margin-top: 16px;
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--adriatic);
+    min-height: 20px;
+  }
+
+  /* ---------- lock / unlock location ---------- */
+  .lock-notice{
+    font-family: var(--serif-body);
+    font-style: italic;
+    color: var(--muted);
+    border: 1px dashed var(--gold-soft);
+    padding: 22px 24px;
+    border-radius: 4px;
+  }
+  .lock-content{
+    display: none;
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(6px);
+    transition: opacity 1s cubic-bezier(.22,.61,.36,1), filter 1s cubic-bezier(.22,.61,.36,1), transform 1s cubic-bezier(.22,.61,.36,1);
+  }
+  .locked-section.unlocked .lock-notice{ display: none; }
+  .locked-section.unlocked .lock-content{
+    display: block;
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+
+</style>
+</head>
+<body>
+
+<canvas id="sky"></canvas>
+
+<div class="thread-wrap">
+  <div class="thread-track"></div>
+  <div class="thread-fill" id="threadFill">
+    <div class="thread-spark"></div>
+  </div>
+</div>
+
+<main>
+
+  <section class="hero">
+    <div class="seal" id="seal">
+      <svg viewBox="0 0 100 100">
+        <circle class="seal-base" cx="50" cy="50" r="34"></circle>
+        <circle class="seal-base" cx="50" cy="50" r="27"></circle>
+        <path class="seal-crack" d="M32 40 L48 52 L38 68 M48 52 L66 46"></path>
+      </svg>
+    </div>
+    <p class="eyebrow">nos casamo</p>
+    <h1 class="title">Tashana &amp; Chanchito</h1>
+    <p class="hero-sub">13 de febrero del 2027 · San Gil, Santander<br>y sí, e verdad, no e broma (bueno... un poco sí).</p>
+    <div class="scroll-cue"><span class="line"></span>sigue bajando</div>
+  </section>
+
+  <div class="col">
+
+    <section id="c1">
+      <div class="chapter-mark reveal">
+        <span class="chapter-num">I</span>
+        <span class="chapter-rule"></span>
+      </div>
+      <h2 class="chapter-title reveal d1">Dos camino, uno solo</h2>
+      <p class="reveal d1">Depué de tanto tiempo dando vuelta y vuelta, ya al fin lo do' tortolito se van a casá. Con el corazón bien contento (y un poco loco tamvién), le queremo contá que ese día va a sé una locura buena.</p>
+      <p class="reveal d2">Tu ha sido parte bien importante de esta vaina, así que también queremo que estés ahí pa'l show.</p>
+    </section>
+
+    <section id="c2">
+      <div class="chapter-mark reveal">
+        <span class="chapter-num">II</span>
+        <span class="chapter-rule"></span>
+      </div>
+      <h2 class="chapter-title reveal d1">Fecha y hora</h2>
+      <p class="reveal d1">La boda e el <em>sábado 13 de febrero del 2027</em>, en San Gil, Santander. No llegue tarde que ahí sí lo dejamo.</p>
+      <p class="pull reveal d2">Ceremonia: 4:00 p.m. — Fiesta: 6:00 p.m.</p>
+      <p class="reveal d3">Llegue con tiempito pa' que no se pierda ni un pedacito del show.</p>
+    </section>
+
+    <section id="c3">
+      <div class="chapter-mark reveal">
+        <span class="chapter-num">III</span>
+        <span class="chapter-rule"></span>
+      </div>
+      <h2 class="chapter-title reveal d1">El sí, quiero</h2>
+      <div class="motif reveal d1">
+        <svg viewBox="0 0 90 90">
+          <circle cx="34" cy="46" r="20"></circle>
+          <circle cx="56" cy="46" r="20"></circle>
+        </svg>
+      </div>
+      <p class="reveal d2">Depué de tanto vaivén, ya llegó el momento del sí pa' siempre. Y ese momento queremo sellarlo con la gente que má queremo cerca.</p>
+    </section>
+
+    <section id="c4">
+      <div class="chapter-mark reveal">
+        <span class="chapter-num">IV</span>
+        <span class="chapter-rule"></span>
+      </div>
+      <h2 class="chapter-title reveal d1">Confirma tu asistencia</h2>
+      <p class="reveal d1">Tu presencia e el mejor regalo que no' puede dar ese día. Confirma aquí abajo ante' del <em>[fecha límite]</em> — apena lo hagas te enseñamo dónde e la vaina.</p>
+
+      <form id="rsvpForm" class="rsvp-form reveal d2">
+        <label class="rsvp-label" for="rsvpName">y como e q tu te llama?</label>
+        <input class="rsvp-input" type="text" id="rsvpName" name="rsvpName" required>
+
+        <label class="rsvp-label" for="rsvpAttend">vaí a veni a vel a lo' toltolito casatse??</label>
+        <select class="rsvp-input" id="rsvpAttend" name="rsvpAttend" required>
+          <option value="" disabled selected>selecciona</option>
+          <option value="jei">jei</option>
+          <option value="nokas">nokas</option>
+        </select>
+
+        <label class="rsvp-label" for="rsvpGuests">y cuanta pelsona tu piensa trael a la party??</label>
+        <input class="rsvp-input" type="number" id="rsvpGuests" name="rsvpGuests" min="0" value="0" required>
+
+        <button class="rsvp-submit" type="submit">confirmá de una vez</button>
+        <p class="rsvp-status" id="rsvpStatus"></p>
+      </form>
+    </section>
+
+    <section id="locationSection" class="locked-section">
+      <div class="chapter-mark reveal">
+        <span class="chapter-num">V</span>
+        <span class="chapter-rule"></span>
+      </div>
+      <h2 class="chapter-title reveal d1">El lugar</h2>
+
+      <div class="lock-notice reveal d1" id="lockNotice">
+        <p>confirma ahí arriba pa' que te enseñemo dónde e la vaina 🔒</p>
+      </div>
+
+      <div class="lock-content" id="lockedContent">
+        <p class="reveal d1">Va a sé en San Gil, Santander, en un sitio que preparamo con mucho cariño pa' recibir a la gente que má queremo.</p>
+        <p class="reveal d2"><em>[Nombre del lugar / finca / salón]</em><br>[Dirección completa]<br>San Gil, Santander</p>
+      </div>
+    </section>
+
+    <section id="c6" class="closing">
+      <div class="chapter-mark reveal">
+        <span class="chapter-num">VI</span>
+        <span class="chapter-rule"></span>
+      </div>
+      <h2 class="chapter-title reveal d1">Nos vemos ahí</h2>
+      <p class="reveal d1">Gracia por sé parte de esta vaina y por acompañarno en este show nuevo. Que tú estés ahí va a hacé que todo sea mucho má chévere.</p>
+      <p class="pull reveal">Con mucho cariño te esperamo pa' celebrá el inicio de esta nueva vida (y pa' comé bien también).</p>
+
+      <div class="signature-wrap reveal" id="sigWrap">
+        <svg viewBox="0 0 260 90">
+          <path class="sig-path" d="M10 60 C 20 20, 40 15, 48 45 C 54 68, 62 68, 68 45 C 74 22, 82 20, 88 50 L 92 30 C 100 55, 108 60, 118 40 C 122 65, 132 68, 140 45 C 148 65, 158 65, 165 40 M 175 55 C 185 30, 200 30, 205 55 C 210 30, 225 25, 235 55 C 245 20, 250 40, 250 40"></path>
+        </svg>
+      </div>
+
+      <p class="final-line reveal">Con amor, Tashana &amp; Chanchito <span class="heart">💍</span></p>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="col">
+      <p class="footer-note">Tashana &amp; Chanchito — 13 de febrero del 2027, San Gil, Santander.</p>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // ---------- starfield ----------
+  const canvas = document.getElementById('sky');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  let w, h;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = document.documentElement.scrollHeight;
+    canvas.style.height = h + 'px';
+    buildStars();
+  }
+
+  function buildStars(){
+    const count = Math.floor((w * Math.min(h, window.innerHeight * 3)) / 9000);
+    stars = [];
+    for(let i=0;i<count;i++){
+      stars.push({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: Math.random()*1.3 + 0.2,
+        base: Math.random()*0.5 + 0.25,
+        phase: Math.random()*Math.PI*2,
+        speed: Math.random()*0.02 + 0.006
+      });
+    }
+  }
+
+  let t = 0;
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const s of stars){
+      const twinkle = reduceMotion ? s.base : s.base + Math.sin(t*s.speed*50 + s.phase) * 0.25;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(240,230,208,${Math.max(0, Math.min(1, twinkle))})`;
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    t += 1;
+    if(!reduceMotion) requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+  if(reduceMotion) draw();
+
+  // ---------- thread progress ----------
+  const threadFill = document.getElementById('threadFill');
+  function onScroll(){
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? Math.min(1, window.scrollY / docH) : 0;
+    threadFill.style.height = (pct*100) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ---------- seal opening ----------
+  const seal = document.getElementById('seal');
+  const heroSection = document.querySelector('.hero');
+  const sealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting){
+        seal.classList.add('opened');
+      }
+    });
+  }, { threshold: 0.55 });
+  sealObserver.observe(heroSection);
+
+  // ---------- reveal on scroll ----------
+  const revealEls = document.querySelectorAll('.reveal, .motif');
+  const revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+  revealEls.forEach(el=> revealObserver.observe(el));
+
+  const sigWrap = document.getElementById('sigWrap');
+  const sigObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        sigWrap.classList.add('in');
+      }
+    });
+  }, { threshold: 0.4 });
+  sigObserver.observe(sigWrap);
+
+  // ---------- RSVP -> Google Form ----------
+  const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdcR_TX4oLahOdZ4clU2SKSneBchtZsxEI-WAI7mTURIOjF7Q/formResponse';
+  const ENTRY_NAME = 'entry.46313625';
+  const ENTRY_ATTEND = 'entry.546935032';
+  const ENTRY_GUESTS = 'entry.581444347';
+
+  const locationSection = document.getElementById('locationSection');
+  const rsvpForm = document.getElementById('rsvpForm');
+  const rsvpStatus = document.getElementById('rsvpStatus');
+
+  function unlockLocation(){
+    locationSection.classList.add('unlocked');
+    locationSection.querySelectorAll('.lock-content .reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // si ya confirmó "jei" antes en este navegador, desbloquear de una
+  if(localStorage.getItem('rsvpConfirmado') === 'sí'){
+    unlockLocation();
+  }
+
+  if(rsvpForm){
+    rsvpForm.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const name = document.getElementById('rsvpName').value.trim();
+      const attend = document.getElementById('rsvpAttend').value;
+      const guests = document.getElementById('rsvpGuests').value;
+
+      if(!name || !attend){
+        rsvpStatus.textContent = "ey, llena to' primero";
+        return;
+      }
+
+      const submitBtn = rsvpForm.querySelector('.rsvp-submit');
+      submitBtn.disabled = true;
+      rsvpStatus.textContent = 'mandando...';
+
+      const formData = new FormData();
+      formData.append(ENTRY_NAME, name);
+      formData.append(ENTRY_ATTEND, attend);
+      formData.append(ENTRY_GUESTS, guests);
+
+      fetch(GOOGLE_FORM_ACTION, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).then(()=>{
+        if(attend === 'jei'){
+          rsvpStatus.textContent = '¡dale que ahí te esperamo, no falte!';
+          localStorage.setItem('rsvpConfirmado', 'sí');
+          unlockLocation();
+        } else {
+          rsvpStatus.textContent = 'ta bien, pero uno que se lo pierde jaja';
+          localStorage.setItem('rsvpConfirmado', 'no');
+        }
+        submitBtn.textContent = 'confirmao ✓';
+      }).catch(()=>{
+        rsvpStatus.textContent = 'algo salió mal, dale otra ve';
+        submitBtn.disabled = false;
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
