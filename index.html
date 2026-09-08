@@ -422,6 +422,43 @@
     min-height: 20px;
   }
 
+  /* ---------- countdown ---------- */
+  .countdown{
+    display: flex;
+    gap: 22px;
+    margin: 8px 0 18px 0;
+    flex-wrap: wrap;
+  }
+  .countdown-unit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 64px;
+  }
+  .countdown-num{
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(30px, 5vw, 42px);
+    color: var(--gold);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown-label{
+    margin-top: 8px;
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .countdown-caption{
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
   /* ---------- lock / unlock location ---------- */
   .lock-notice{
     font-family: var(--serif-body);
@@ -484,7 +521,7 @@
       </div>
       <h2 class="chapter-title reveal d1">q se quieren casá dice </h2>
       <p class="reveal d1">depué de tanto tiempo dando vuelta y vuelta, ya al fin lo do tortolito se van a casá. le queremo contá que ese día va a sé una lokera zabrosa</p>
-      <p class="reveal d2">a ti te queremo invita pa que lleve sobresito lleno e platica, poque tu ere palte de eta vaina tambien, así que también queremo que estés ahí pa dáte de tragá un poquito /p>
+      <p class="reveal d2">a ti te queremo invita pa que lleve sobresito lleno e platica, poque tu ere palte de eta vaina tambien, así que también queremo que estés ahí pa dáte de tragá un poquito</p>
     </section>
 
     <section id="c2">
@@ -492,10 +529,30 @@
         <span class="chapter-num">II</span>
         <span class="chapter-rule"></span>
       </div>
-      <h2 class="chapter-title reveal d1">fecha y lora /h2>
+      <h2 class="chapter-title reveal d1">fecha y hora</h2>
       <p class="reveal d1">La boda e el <em>sábado 13 de febrero del 2027</em>, en san Gil, santander.llega talde pa no tene que dáte de tragá ve, q eso van a dal brauni y eso me queda e a mi </p>
       <p class="pull reveal d2">ceremonia: 4:00 p.m. — fiesta: 6:00 p.m.</p>
       <p class="reveal d3"> y si no, pue llegue con tiempito pa que no se pierda toa la vaina q a pasal</p>
+
+      <div class="countdown reveal d3" id="countdown">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cdDays">00</span>
+          <span class="countdown-label">días</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cdHours">00</span>
+          <span class="countdown-label">horas</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cdMinutes">00</span>
+          <span class="countdown-label">min</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cdSeconds">00</span>
+          <span class="countdown-label">seg</span>
+        </div>
+      </div>
+      <p class="countdown-caption reveal d3" id="countdownCaption">pa que se te vaya el corazoncito acelerando</p>
     </section>
 
     <section id="c3">
@@ -678,6 +735,48 @@
   }, { threshold: 0.4 });
   sigObserver.observe(sigWrap);
 
+  // ---------- cuenta regresiva ----------
+  // ceremonia: sábado 13 de feb 2027, 4:00 p.m., hora Colombia (UTC-5, sin horario de verano)
+  const weddingDate = new Date('2027-02-13T16:00:00-05:00');
+  const cdDays = document.getElementById('cdDays');
+  const cdHours = document.getElementById('cdHours');
+  const cdMinutes = document.getElementById('cdMinutes');
+  const cdSeconds = document.getElementById('cdSeconds');
+  const countdownCaption = document.getElementById('countdownCaption');
+
+  function pad(n){ return String(n).padStart(2, '0'); }
+
+  function tickCountdown(){
+    const now = new Date();
+    let diff = weddingDate - now;
+
+    if(diff <= 0){
+      cdDays.textContent = '00';
+      cdHours.textContent = '00';
+      cdMinutes.textContent = '00';
+      cdSeconds.textContent = '00';
+      countdownCaption.textContent = '¡hoy e el día, nojoda! 🎉';
+      clearInterval(countdownInterval);
+      return;
+    }
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    diff -= days * (1000*60*60*24);
+    const hours = Math.floor(diff / (1000*60*60));
+    diff -= hours * (1000*60*60);
+    const minutes = Math.floor(diff / (1000*60));
+    diff -= minutes * (1000*60);
+    const seconds = Math.floor(diff / 1000);
+
+    cdDays.textContent = pad(days);
+    cdHours.textContent = pad(hours);
+    cdMinutes.textContent = pad(minutes);
+    cdSeconds.textContent = pad(seconds);
+  }
+
+  tickCountdown();
+  const countdownInterval = setInterval(tickCountdown, 1000);
+
   // ---------- RSVP -> Google Form ----------
   const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdcR_TX4oLahOdZ4clU2SKSneBchtZsxEI-WAI7mTURIOjF7Q/formResponse';
   const ENTRY_NAME = 'entry.46313625';
@@ -693,9 +792,17 @@
     locationSection.querySelectorAll('.lock-content .reveal').forEach(el => el.classList.add('in'));
   }
 
-  // si ya confirmó "jei" antes en este navegador, desbloquear de una
+  function lockLocation(){
+    locationSection.classList.remove('unlocked');
+    locationSection.querySelectorAll('.lock-content .reveal').forEach(el => el.classList.remove('in'));
+  }
+
+  // solo se desbloquea si la última respuesta guardada fue "sí" —
+  // si fue "no", se queda (o se vuelve a dejar) bloqueado
   if(localStorage.getItem('rsvpConfirmado') === 'sí'){
     unlockLocation();
+  } else {
+    lockLocation();
   }
 
   if(rsvpForm){
@@ -732,6 +839,7 @@
         } else {
           rsvpStatus.textContent = 'ta bien, pero uno que se lo pierde jaja';
           localStorage.setItem('rsvpConfirmado', 'no');
+          lockLocation();
         }
         submitBtn.textContent = 'confirmao ✓';
       }).catch(()=>{
