@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tatiana &amp; Andrés</title>
+<meta name="theme-color" content="#1A2A1B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F4F1EA;--cream2:#EDE8DC;--forest:#2C3E2D;--deep:#1A2A1B;--sage2:#6B7A68;--ink:#2C2C2C;--ink2:#4A4A4A;--pf:'Playfair Display',serif;--cg:'Cormorant Garamond',serif;--ms:'Montserrat',sans-serif;
+--chrome:linear-gradient(115deg,#6e5322 0%,#b8953f 14%,#f8ecc0 28%,#c8a24f 42%,#7d5f26 56%,#efd9a0 70%,#a8832f 84%,#f6e8b6 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{-webkit-tap-highlight-color:transparent;background:var(--cream);color:var(--ink);font-family:var(--cg);font-size:20px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:#b8953f}
+[hidden]{display:none!important}
+section,footer{position:relative;overflow:hidden;padding:96px 24px}
+.in{position:relative;z-index:1;max-width:1040px;margin:0 auto}
+.dark{color:var(--cream)}.deep{background:var(--deep)}.forest{background:var(--forest)}.alt{background:var(--cream2)}
+/* chrome gold */
+.ch,.chs .i,.amp,.lbl,.fk{background:var(--chrome);background-size:100% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.lbl{font:500 11px/1.2 var(--ms);letter-spacing:.34em;text-transform:uppercase;margin-bottom:22px;display:block}
+.rule{width:64px;height:2px;background:var(--chrome);background-size:100% 100%;margin:0 0 28px}
+h2{font:400 clamp(2rem,8vw,3.6rem)/1.1 var(--pf);margin-bottom:28px}
+p.t{font-size:clamp(1.1rem,3.6vw,1.35rem);color:var(--ink2);max-width:560px}
+.dark p.t{color:rgba(244,241,234,.82)}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.16em;margin-bottom:-.16em}.i{display:inline-block}
+.fk{position:absolute;pointer-events:none;animation:tw 9s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.1;transform:translateY(0) rotate(0) scale(.8)}50%{opacity:.95;transform:translateY(-14px) rotate(25deg) scale(1.15)}}
+#pg{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--chrome);transform:scaleX(0);transform-origin:left;z-index:90}
+#pre{position:fixed;inset:0;background:var(--deep);z-index:100;display:grid;place-content:center;text-align:center;color:var(--cream);font:400 1.4rem var(--pf)}
+#pl{width:min(240px,60vw);height:2px;background:var(--chrome);margin:18px auto 0;transform:scaleX(0)}
+
+/* image sections */
+.pi img,#hero img{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover}
+.pi:after,#hero:after{content:"";position:absolute;inset:0;background:rgba(26,42,27,.74)}
+#hero{min-height:100svh;padding:0;display:flex;align-items:flex-end;color:var(--cream)}
+#hero:after{background:linear-gradient(180deg,rgba(26,42,27,.4),rgba(26,42,27,.1) 40%,rgba(26,42,27,.9))}
+#hero .in{width:100%;padding:0 24px 13vh;text-align:center}
+h1{font:400 clamp(2.9rem,15vw,7rem)/1 var(--pf)}
+.big{font:400 clamp(2.4rem,12vw,5.5rem)/1.05 var(--pf)}
+.cue{margin-top:40px;font:400 10px var(--ms);letter-spacing:.3em;text-transform:uppercase;opacity:.8}
+.cue:after{content:"";display:block;width:1px;height:38px;margin:12px auto 0;background:linear-gradient(#e6cf8c,transparent);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sp{display:grid;gap:44px;align-items:center}
+.fig{position:relative;overflow:hidden;aspect-ratio:3/4}
+.fig:after{content:"";position:absolute;inset:0;border:1px solid transparent;border-image:var(--chrome) 1;margin:12px;pointer-events:none}
+.fig img{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover}
+
+/* countdown */
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:20px;border-top:1px solid rgba(212,184,122,.4);padding-top:34px;text-align:center}
+.cd b{display:flex;justify-content:center;font:400 clamp(2.3rem,11vw,5rem)/1.15 var(--pf);font-weight:400}
+.dg{display:inline-block;width:.64em;overflow:hidden;text-align:center}.dg i{display:inline-block;font-style:normal;background:var(--chrome);background-size:100% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cd small{font:400 10px var(--ms);letter-spacing:.25em;text-transform:uppercase;color:rgba(244,241,234,.7)}
+
+/* rsvp */
+.dlb{font:400 clamp(.7rem,3vw,.9rem) var(--ms);letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px}
+.dbig{font:400 clamp(3.4rem,19vw,9rem)/.95 var(--pf);margin-bottom:6px}
+.dyr{font:italic clamp(1.6rem,7vw,3rem) var(--cg);margin-bottom:30px}
+.card{background:rgba(244,241,234,.97);color:var(--ink);padding:36px 26px;margin-top:44px;max-width:520px}
+.opts{display:grid;gap:12px;margin-bottom:26px}.opts input{position:absolute;opacity:0}
+.opts span{display:block;padding:18px 20px;border:1px solid rgba(44,62,45,.3);font:400 1.25rem var(--cg);cursor:pointer;transition:all .45s cubic-bezier(.22,.61,.36,1);position:relative}
+.opts span:before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--forest);transition:width .5s cubic-bezier(.22,.61,.36,1)}
+.opts span b{position:relative;font-weight:400;transition:color .4s}
+.opts input:checked+span:before{width:100%}.opts input:checked+span b{color:var(--cream)}
+.btn{position:relative;overflow:hidden;border:0;background:var(--forest);color:var(--cream);font:500 12px var(--ms);letter-spacing:.2em;text-transform:uppercase;padding:18px 28px;cursor:pointer;width:100%;display:inline-block;text-align:center;text-decoration:none}
+.btn:before{content:"";position:absolute;inset:0;background:var(--chrome);background-size:100% 100%;transform:translateX(-101%);transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+.btn span{position:relative}.btn:active:before{transform:none}.btn:active{color:var(--deep)}.btn:disabled{opacity:.5}
+#msg,#ok p{font:italic 1.2rem var(--cg);color:var(--forest);margin-top:18px;min-height:1em}
+.lnk{background:none;border:0;border-bottom:1px solid #b8953f;font:400 11px var(--ms);letter-spacing:.14em;text-transform:uppercase;color:var(--sage2);margin-top:16px;cursor:pointer}
+
+/* itinerary (locked) */
+.lk{position:relative}
+.ev{display:grid;gap:22px;transition:filter .3s}
+.lk.on .ev{filter:blur(9px);pointer-events:none;user-select:none}
+.ev article{background:var(--cream);padding:34px 28px;border-top:2px solid #b8953f}
+.ev h3{font:400 1.7rem/1.2 var(--pf);margin:6px 0 14px}.ev .h{font:italic 2.2rem var(--cg);color:var(--forest)}
+.ev p{color:var(--ink2);font-size:1.1rem}
+.ov{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;gap:20px;padding:20px;z-index:2}
+.ov p{font:italic clamp(1.3rem,5vw,1.8rem)/1.3 var(--cg);color:var(--deep);max-width:420px}
+.ov .btn{width:auto;padding:18px 34px}
+.map{display:inline-block;margin-top:20px;font:500 11px var(--ms);letter-spacing:.2em;text-transform:uppercase;color:var(--forest);text-decoration:none;position:relative;padding-bottom:5px}
+.map:after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--chrome);}
+.map i{font-style:normal}
+
+/* quote / dress / gifts / closing */
+#q,#end{min-height:85svh;display:flex;align-items:center;text-align:center;padding:90px 24px}
+#q .in{max-width:860px}.qt{font:italic clamp(1.8rem,7vw,3.2rem)/1.3 var(--cg)}
+.style{font:italic clamp(1.8rem,7vw,2.6rem) var(--cg);color:var(--forest);margin-bottom:14px}
+.sw{display:flex;flex-wrap:wrap;gap:26px 20px;margin-top:30px}
+.sw div{text-align:center;width:82px;font:400 10px/1.4 var(--ms);letter-spacing:.14em;text-transform:uppercase;color:var(--sage2)}
+.sw i{display:block;width:62px;height:62px;border-radius:50%;margin:0 auto 12px;position:relative;border:1px solid rgba(44,44,44,.18)}
+.sw i:before,.sw i:after{content:"";position:absolute;left:50%;top:50%;width:122%;height:2px;background:var(--chrome);transform:translate(-50%,-50%) rotate(45deg)}
+.sw i:after{transform:translate(-50%,-50%) rotate(-45deg)}
+.env{width:230px;height:150px;background:var(--cream2);margin:10px 0 40px;position:relative;box-shadow:0 24px 40px rgba(0,0,0,.35);transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+.env:before{content:"";position:absolute;left:0;top:0;border-left:115px solid transparent;border-right:115px solid transparent;border-top:86px solid #E2DACA}
+.env:after{content:"✦";position:absolute;left:50%;top:86px;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fff6cf,#c8a24f 48%,#7d5f26);color:var(--deep);display:grid;place-items:center;font-size:15px}
+footer{text-align:center;padding:80px 24px calc(60px + env(safe-area-inset-bottom))}
+footer .nm{font:400 1.6rem var(--pf);margin-bottom:26px}
+
+@media(prefers-reduced-motion:reduce){.fk,.cue:after,.ch,.chs .i,.amp,.lbl,.rule{animation:none}}
+
+.fl{display:block;font:500 11px var(--ms);letter-spacing:.2em;text-transform:uppercase;color:var(--sage2);margin:0 0 8px}
+.tx{width:100%;border:0;border-bottom:1px solid rgba(44,62,45,.35);border-radius:0;background:transparent;font:400 1.2rem var(--cg);color:var(--ink);padding:10px 2px;margin-bottom:28px;outline:none}
+.tx:focus{border-bottom-color:#b8953f}
+.nums{grid-template-columns:repeat(auto-fit,minmax(58px,1fr))}.nums span{text-align:center;padding:14px 0}
+@media(hover:hover){.opts label:hover span{border-color:#b8953f}.btn:hover:before{transform:none}.btn:hover{color:var(--deep)}.env:hover{transform:translateY(-8px) rotate(-1.5deg)}}
+@media(min-width:768px){
+ section{padding:150px 40px}
+ .sp{grid-template-columns:1fr 1fr;gap:80px}.sp.rev .fig{order:2}
+ .ev{grid-template-columns:1fr 1fr;gap:30px}
+ .opts:not(.nums){grid-template-columns:1fr 1fr}
+ #hero .in{padding-bottom:10vh}
+ .cd{max-width:760px}
+}
+</style>
+</head>
+<body>
+<div id="pg"></div>
+<div id="pre"><div>Tatiana &amp; Andrés</div><div id="pl"></div></div>
+
+<section id="hero" class="dark" data-f="3">
+  <img src="images/hero.jpg" alt="" data-par>
+  <div class="in">
+    <span class="lbl" data-r>Nos casamos</span>
+    <h1 data-c>Tatiana &amp; Andrés</h1>
+    <p class="big chs" data-c style="margin-top:22px">13 · 02 · 2027</p>
+    <div class="cue">Desliza</div>
+  </div>
+</section>
+
+<section id="story" class="alt">
+  <div class="in sp">
+    <div class="fig" data-im><img src="images/g1.jpg" alt="" loading="lazy" data-par></div>
+    <div>
+      <span class="lbl" data-r>Con alegría te invitamos</span>
+      <h2 data-w>Comenzamos una vida juntos</h2>
+      <div class="rule" data-r></div>
+      <p class="t" data-s>Tatiana Guerrero y Andrés Salazar te invitan a celebrar el comienzo de su vida juntos. Confirma tu asistencia para conocer la hora y el lugar de la celebración.</p>
+    </div>
+  </div>
+</section>
+
+<section id="count" class="pi dark" data-f="2">
+  <img src="images/g2.jpg" alt="" loading="lazy" data-par>
+  <div class="in">
+    <span class="lbl" data-r>Cada segundo cuenta</span>
+    <h2 data-c>Faltan</h2>
+    <div class="cd" id="cd" data-r></div>
+  </div>
+</section>
+
+<section id="rsvp" class="pi dark" data-f="2">
+  <img src="images/g3.jpg" alt="" loading="lazy" data-par>
+  <div class="in">
+    <span class="lbl" data-r>Importante · no lo olvides</span>
+    <p class="dlb ch" data-r>Fecha límite para confirmar</p>
+    <p class="dbig chs" data-c>15 de enero</p>
+    <p class="dyr ch" data-r>del 2027</p>
+    <p class="t" data-s>Confirma antes de esta fecha para que podamos contar contigo y revelarte la hora y el lugar.</p>
+    <div class="card" data-r>
+      <form id="form">
+        <label class="fl" for="nm">Tu nombre completo</label>
+        <input class="tx" id="nm" type="text" autocomplete="name" maxlength="80">
+        <div class="opts">
+          <label><input type="radio" name="a" value="si" required><span><b>Sí, ahí estaré</b></span></label>
+          <label><input type="radio" name="a" value="no"><span><b>No podré asistir</b></span></label>
+        </div>
+        <div id="pp" hidden><span class="fl">¿Cuántas personas asistirán?</span><div class="opts nums" id="chips"></div></div>
+        <button class="btn" id="go" type="submit"><span>Confirmar asistencia →</span></button>
+        <p id="msg"></p>
+      </form>
+      <div id="ok" hidden><p id="okt"></p><button class="lnk" id="chg" type="button" hidden>Cambiar respuesta</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="itin">
+  <div class="in">
+    <span class="lbl" data-r>Nuestro día</span>
+    <h2 data-c>Hora y lugar</h2>
+    <div class="lk on" id="lk">
+      <div class="ev" id="ev"></div>
+      <div class="ov" id="ov"><p id="ovt">La hora y el lugar se revelan al confirmar tu asistencia.</p><a class="btn" id="ovb" href="#rsvp"><span>Confirmar ahora →</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section id="q" class="pi dark" data-f="2">
+  <img src="images/quote.jpg" alt="" loading="lazy" data-par>
+  <div class="in"><p class="qt" data-s>Nos encontramos, nos elegimos y hoy queremos compartir con ustedes nuestra felicidad.</p></div>
+</section>
+
+<section id="dress">
+  <div class="in sp">
+    <div class="fig" data-im><img src="images/g4.jpg" alt="" loading="lazy" data-par style="object-position:50% 40%"></div>
+    <div>
+      <span class="lbl" data-r>Código de vestimenta</span>
+      <h2 data-w>Formal elegante</h2>
+      <p class="t" data-s>Queremos que la celebración sea elegante y especial. Te invitamos a vestir de manera formal y acorde a la ocasión.</p>
+      <span class="lbl" style="margin-top:44px" data-r>Tonos reservados · no usar</span>
+      <div class="sw" data-st>
+        <div><i style="background:#046307"></i>Verde esmeralda</div>
+        <div><i style="background:#1B3A5C"></i>Azul</div>
+        <div><i style="background:#722F37"></i>Vinotinto</div>
+        <div><i style="background:#FFFFFF"></i>Blanco</div>
+        <div><i style="background:#F5F5DC"></i>Tonos muy claros</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gift" class="dark forest" data-f="2">
+  <div class="in sp rev">
+    <div class="fig" data-im><img src="images/g5.jpg" alt="" loading="lazy" data-par></div>
+    <div>
+      <span class="lbl" data-r>Regalos</span>
+      <h2 data-c>Lluvia de sobres</h2>
+      <div class="env" data-r></div>
+      <p class="t" data-s>Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, nuestra única petición es una lluvia de sobres.</p>
+    </div>
+  </div>
+</section>
+
+<section id="end" class="pi dark" data-f="2">
+  <img src="images/g6.jpg" alt="" loading="lazy" data-par>
+  <div class="in" style="text-align:center">
+    <span class="lbl" data-r>Un detalle para nuestro nuevo comienzo</span>
+    <p class="big" data-c>Te esperamos</p>
+    <p class="big chs" data-c style="margin-top:14px">13 · 02 · 2027</p>
+  </div>
+</section>
+
+<footer class="dark deep">
+  <div class="in">
+    <p class="nm">Tatiana &amp; Andrés</p>
+    <p class="dlb ch">Fecha límite para confirmar</p>
+    <p class="big chs" data-c>15 de enero del 2027</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* ====== CONFIGURACIÓN DEL GOOGLE FORM ====== */
+const FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSfzTvCPlKUO31I--jWQoJ8lFBbqKNiwWTdHaTVPZzAaX_TFdA/viewform?usp=dialog';
+const ENTRY_ASISTENCIA='entry.REEMPLAZAR'; // pregunta "Confirmas asistencia"
+const ENTRY_NOMBRE='entry.REEMPLAZAR';     // pregunta "Nombre" (respuesta corta)
+const ENTRY_PERSONAS='entry.REEMPLAZAR';   // pregunta "Número de personas" (respuesta corta)
+const MAXP=6; // máximo de personas que se puede elegir al confirmar
+const WEDDING=new Date('2027-02-13T00:00:00-05:00'); // cuenta al día (no revela la hora)
+const EV=[ // se muestran SOLO al confirmar
+ {l:'Ceremonia',h:'11:00 A.M.',t:'Discurso de matrimonio',a:'Cl. 8 #4-2<br>San Gil, Santander',q:'Cl. 8 #4-2, San Gil, Santander, Colombia'},
+ {l:'Celebración',h:'5:30 P.M.',t:'Restaurante La Unión',a:'JW88+6R Curití<br>Santander, Colombia',q:'JW88+6R Curití, Santander, Colombia'}];
+/* ========================================== */
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches,$=id=>document.getElementById(id);
+let lenis=null;gsap.registerPlugin(ScrollTrigger);
+if(!RM){lenis=new Lenis({duration:1.3});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0)}
+const HD=RM?0:1.5;
+
+document.querySelectorAll('[data-f]').forEach(s=>{for(let k=0;k<+s.dataset.f;k++){const f=document.createElement('i');f.className='fk';f.textContent='✦';f.style.cssText=`left:${2+Math.random()*92}%;top:${4+Math.random()*88}%;font-size:${7+Math.random()*6}px;animation-delay:${-Math.random()*9}s;animation-duration:${7+Math.random()*6}s`;s.appendChild(f)}});
+
+function split(el,c){const t=el.textContent.trim();el.setAttribute('aria-label',t);el.textContent='';
+ t.split(' ').forEach((w,n,a)=>{const s=document.createElement('span');s.className='w';s.setAttribute('aria-hidden','true');
+  (c?[...w]:[w]).forEach(x=>{const i=document.createElement('span');i.className='i'+(x==='&'?' amp':'');i.textContent=x;s.appendChild(i)});
+  el.appendChild(s);if(n<a.length-1)el.appendChild(document.createTextNode(' '))})}
+
+function anim(root){
+ if(RM)return;
+ const dl=el=>el.closest('#hero')?HD:0;
+ root.querySelectorAll('[data-c],[data-w]').forEach(el=>{const c=el.hasAttribute('data-c');split(el,c);
+  gsap.from(el.querySelectorAll('.i'),{yPercent:120,rotate:6,opacity:0,duration:1.2,ease:'power4.out',delay:dl(el),stagger:c?.05:.045,scrollTrigger:{trigger:el,start:'top 90%'}})});
+ root.querySelectorAll('[data-s]').forEach(el=>{split(el,false);
+  gsap.fromTo(el.querySelectorAll('.i'),{opacity:.12},{opacity:1,stagger:.12,ease:'none',scrollTrigger:{trigger:el,start:'top 82%',end:'bottom 50%',scrub:true}})});
+ root.querySelectorAll('[data-r]').forEach(el=>gsap.from(el,{y:34,opacity:0,duration:1.1,ease:'power3.out',delay:dl(el),scrollTrigger:{trigger:el,start:'top 92%'}}));
+ root.querySelectorAll('[data-st]').forEach(g=>gsap.from(g.children,{y:44,opacity:0,duration:1,ease:'power3.out',stagger:.12,scrollTrigger:{trigger:g,start:'top 88%'}}));
+ root.querySelectorAll('[data-im]').forEach(f=>gsap.from(f,{clipPath:'inset(22% 14% 22% 14%)',duration:1.7,ease:'power4.out',scrollTrigger:{trigger:f,start:'top 85%'}}));
+ root.querySelectorAll('[data-par]').forEach(im=>gsap.fromTo(im,{yPercent:-7},{yPercent:7,ease:'none',scrollTrigger:{trigger:im.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
+}
+anim(document.body);
+if(!RM){
+ gsap.to('#pg',{scaleX:1,ease:'none',scrollTrigger:{scrub:.3,start:0,end:'max'}});
+}
+
+/* preloader + intro */
+function intro(){
+ if(RM){$('pre').remove();return}
+ lenis.stop();
+ gsap.timeline().to('#pl',{scaleX:1,duration:1.1,ease:'power2.inOut'})
+  .to('#pre',{yPercent:-100,duration:1,ease:'power4.inOut',onComplete:()=>{$('pre').remove();lenis.start()}},'+=.1')
+  .from('#hero img',{scale:1.35,duration:2.4,ease:'power3.out'},'<');
+}
+Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,2000))]).then(intro);
+
+/* contador */
+const U=[['d','Días',3],['h','Horas',2],['m','Min',2],['s','Seg',2]];
+$('cd').innerHTML=U.map(([k,l,n])=>`<div><b data-k="${k}">${'<span class="dg"><i>0</i></span>'.repeat(n)}</b><small>${l}</small></div>`).join('');
+let started=false;
+function tick(){const d=Math.max(0,WEDDING-Date.now()),v={d:Math.floor(d/864e5),h:Math.floor(d/36e5)%24,m:Math.floor(d/6e4)%60,s:Math.floor(d/1e3)%60};
+ U.forEach(([k,,n])=>{const t=String(v[k]).padStart(n,'0');document.querySelectorAll(`[data-k="${k}"] i`).forEach((e,j)=>{if(e.textContent!==t[j]){e.textContent=t[j];if(started&&!RM)gsap.fromTo(e,{yPercent:80,opacity:0},{yPercent:0,opacity:1,duration:.6,ease:'power3.out'})}})});started=true}
+tick();setInterval(tick,250);
+
+/* hora y lugar (bloqueados) */
+function card(e,real){return `<article><span class="lbl">${e.l}</span><div class="h">${e.h}</div><h3>${e.t}</h3><p>${e.a}</p>${real?`<a class="map" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.q)}" target="_blank" rel="noopener">Cómo llegar <i>→</i></a>`:''}</article>`}
+const MASK=[{l:'Ceremonia',h:'00:00 A.M.',t:'••••••••••••••',a:'•••••••••••<br>•••••••••••••'},{l:'Celebración',h:'0:00 P.M.',t:'••••••••••••••',a:'•••••••••••<br>•••••••••••••'}];
+$('ev').innerHTML=MASK.map(e=>card(e,false)).join('');
+function reveal(silent){
+ $('ev').innerHTML=EV.map(e=>card(e,true)).join('');$('ov').hidden=true;
+ const lk=$('lk');
+ if(silent||RM){lk.classList.remove('on');return}
+ lk.classList.remove('on');gsap.from('#ev',{filter:'blur(12px)',opacity:.4,duration:1.6,ease:'power2.out'});
+ gsap.from('#ev article',{y:40,opacity:0,duration:1.1,stagger:.15,ease:'power3.out',delay:.3});
+ setTimeout(()=>lenis.scrollTo('#itin',{offset:-40,duration:2.2}),500);
+}
+function burst(el){const r=el.getBoundingClientRect();for(let k=0;k<10;k++){const s=document.createElement('i');s.className='ch';s.textContent='✦';s.style.cssText=`position:fixed;left:${r.left+r.width/2}px;top:${r.top+r.height/2}px;z-index:98;pointer-events:none;font-size:${8+Math.random()*8}px;font-style:normal`;document.body.appendChild(s);const a=Math.random()*6.28,d=70+Math.random()*160;gsap.to(s,{x:Math.cos(a)*d,y:Math.sin(a)*d,opacity:0,rotation:Math.random()*200,duration:1.5,ease:'power3.out',onComplete:()=>s.remove()})}}
+
+function ok(){$('form').hidden=true;$('ok').hidden=false;$('chg').hidden=true;$('okt').textContent='Asistencia confirmada ✓ Ya puedes ver la hora y el lugar.'}
+function declined(){$('form').hidden=true;$('ok').hidden=false;$('chg').hidden=false;$('okt').textContent='Gracias por avisarnos. Te vamos a extrañar.';$('ovt').textContent='Gracias por avisarnos. Te vamos a extrañar.';$('ovb').hidden=true}
+$('chg').onclick=()=>{localStorage.removeItem('ta_rsvp');$('ok').hidden=true;$('form').hidden=false;$('go').disabled=false;$('msg').textContent='';$('ovt').textContent='La hora y el lugar se revelan al confirmar tu asistencia.';$('ovb').hidden=false};
+$('ovb').addEventListener('click',e=>{e.preventDefault();lenis?lenis.scrollTo('#rsvp',{duration:1.8}):$('rsvp').scrollIntoView({behavior:'smooth'})});
+
+const CUP=MAXP;
+$('chips').innerHTML=Array.from({length:CUP},(_,k)=>`<label><input type="radio" name="p" value="${k+1}"><span><b>${k+1}</b></span></label>`).join('');
+document.querySelectorAll('input[name=a]').forEach(r=>r.onchange=()=>{$('pp').hidden=!(r.value==='si'&&CUP>1)});
+$('form').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const a=document.querySelector('input[name=a]:checked'),nm=$('nm').value.trim(),pr=document.querySelector('input[name=p]:checked');
+ if(nm.length<3){$('msg').textContent='Escribe Nombre completo.';return}
+ if(!a){$('msg').textContent='Elige si asistirás o no.';return}
+ const n=a.value==='si'?(CUP>1?(pr?+pr.value:0):1):0;
+ if(a.value==='si'&&!n){$('msg').textContent='Indica cuántas personas asistirán.';return}
+ $('go').disabled=true;$('msg').textContent='Enviando…';
+ try{
+  const fd=new FormData(),set=(k,v)=>{if(!k.includes('REEMPLAZAR'))fd.append(k,String(v))};
+  set(ENTRY_ASISTENCIA,a.value);set(ENTRY_NOMBRE,nm);set(ENTRY_PERSONAS,n);
+  if(ENTRY_ASISTENCIA.includes('REEMPLAZAR'))console.warn('Falta configurar los entry. del Google Form: la respuesta no se está guardando.');
+  else await fetch(FORM_URL,{method:'POST',mode:'no-cors',body:fd});
+ }catch(err){$('msg').textContent='No pudimos enviar tu respuesta. Inténtalo de nuevo.';$('go').disabled=false;return}
+ localStorage.setItem('ta_rsvp',a.value);
+ if(a.value==='si'){if(!RM)burst($('go'));ok();reveal(false)}else declined();
+});
+if(new URLSearchParams(location.search).has('reset'))localStorage.removeItem('ta_rsvp'); // para pruebas: tusitio.com/?reset
+const saved=localStorage.getItem('ta_rsvp');
+if(saved==='si'){ok();reveal(true)}else if(saved==='no')declined();
+</script>
+</body>
+</html>
